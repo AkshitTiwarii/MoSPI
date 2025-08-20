@@ -9,6 +9,9 @@ import { ParadataProvider } from '@/contexts/ParadataContext';
 import { PrepopulationProvider } from '@/contexts/PrepopulationContext';
 import { ResponseProvider } from '@/contexts/ResponseContext';
 import { AdaptiveEventsProvider } from '@/contexts/AdaptiveEventsContext';
+import { OCRProvider } from '@/contexts/OCRContext';
+import { BiometricProvider } from '@/contexts/BiometricContext';
+import { SummarizationProvider } from '@/contexts/SummarizationContext';
 import { LoadingScreen } from '@/components/LoadingScreen';
 import { AuthScreen } from '@/components/AuthScreen';
 import { FloatingChatLauncher } from '@/components/Chatbot';
@@ -48,7 +51,13 @@ export default function RootLayout() {
             <PrepopulationProvider>
             <ResponseProvider>
               <AdaptiveEventsProvider>
-                <AppContent />
+                <OCRProvider>
+                  <BiometricProvider>
+                    <SummarizationProvider>
+                      <AppContent />
+                    </SummarizationProvider>
+                  </BiometricProvider>
+                </OCRProvider>
               </AdaptiveEventsProvider>
             </ResponseProvider>
             </PrepopulationProvider>
